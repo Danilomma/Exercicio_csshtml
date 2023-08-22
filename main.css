@@ -1,13 +1,16 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif; 
-  
+    font-family: sans-serif;
 }
 
-body {
-    display: block;    
+input{
+    display: block;
+}
+
+body{
+    background-color: rgba(150, 75, 0, 40%)
 }
 
 .container {
@@ -29,7 +32,7 @@ input, textarea, button {
 }
 
 button {
-    background-color: #0d09ed;
+    background-color: #aa5e08;
     border: none;
     text-transform: uppercase;
     color: #fff;
@@ -40,19 +43,19 @@ button {
 }
 
 button:hover {
-    background-color: #6992f2;
+    background-color: #27ae60;
 }
 
-.success-message {
+.message-sucess{
     background-color: #27ae60;
     padding: 16px;
     color: #fff;
     display: none;
 }
 
-.error-message {
-    font-size: 12px;
+.message-error{
     padding: 8px;
+    font-size: 12px;
     background-color: red;
     color: #fff;
     margin-bottom: 8px;

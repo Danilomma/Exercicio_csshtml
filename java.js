@@ -1,31 +1,33 @@
-const form = document.getElementById('form-confirm');
+const form = document.getElementById('areas');
+const numeroA = document.getElementById("A");
+const numeroB = document.getElementById("B");
+const campoA = numeroA;
+const campoB = numeroB;
+let formEValido = false;
 
-let formValid = false;
-
-function numbervalid (ValA, ValB){
-    return ValB > ValA;
+function validaCampo(campoA, campoB){
+    return campoB > campoA;
 }
-
 form.addEventListener('submit', function(e){
-    e.preventDefault(); //previne carregamento da página após "submit"
-    let ValA = parseFloat(document.getElementById('valor-a').value);
-    let ValB = parseFloat(document.getElementById('valor-b').value);
+    e.preventDefault();
 
-    const messagesucess = 'formulario enviado com sucesso! Verificando: <b> ValorA menor que ValorB!</B>';
-    const containermessagesucess = document.querySelector('.success-message');
-    
-    formValid = numbervalid(ValA, ValB);
-    
-    if (formValid){
-        document.querySelector('.error-message').style.display = 'none';
-        containermessagesucess.innerHTML = messagesucess;
-        containermessagesucess.style.display = 'block';
-        document.querySelector('.error-message').style.display = 'none';
+    const valorDoInputA = parseFloat(numeroA.value);
+    const valorDoInputB = parseFloat(numeroB.value);
+    const mensagemSucesso = `Resultado correto o valor de B: ${campoB.value} é maior que o valor de A: ${campoA.value}. `;
+    const mensagemErro = `Resultado inválido o valor de B: ${campoB.value} é menor que o valor de A: ${campoA.value}.`;
 
-        ValA.value = '';
-        ValB.value = '';
-    } else {
-        document.querySelector('.error-message').style.display = 'block';
-        containermessagesucess.style.display = 'none';
-    }    
-})
+    formEValido = validaCampo(valorDoInputA, valorDoInputB);
+    if (formEValido == true){
+        const containerMensagemSucesso = document.querySelector('.message-sucess');
+        containerMensagemSucesso.innerHTML = mensagemSucesso;
+        containerMensagemSucesso.style.display = 'block';
+        campoA.value = '';
+        campoB.value = '';
+    }else{
+        if (!formEValido){
+            const containerMensagemErro = document.querySelector('.message-error');
+            containerMensagemErro.innerHTML = mensagemErro;
+            containerMensagemErro.style.display = 'block';
+        };
+    };
+});
